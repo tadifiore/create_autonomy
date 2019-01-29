@@ -8,14 +8,18 @@
       <arg name="calibrated" value="$(arg calib_file)"/>
     </include>
 
-    <node pkg="ca_visual_odometry" type="image_rect" name="image_rect"/>
+    <!-- Image rectifying -->
+    <node ns="raspicam" pkg="image_proc" type="image_proc" name="image_rect"/>
 
+    <!-- Monocular odometry -->
     <node pkg="viso2_ros" type="mono_odometer" name="visual_odometry" args="image:=/raspicam/image_rect">
       <param name="odom_frame_id" value="viso_odom"/>
       <param name="base_link_frame_id" value="base_footprint"/>
       <param name="sensor_frame_id" value="raspicam_link"/>
       <!-- <param name="~ref_frame_change_method" value="2"/>
       <param name="~refinement" value="2"/> -->
+      <param name="~camera_height" value="0.1" />
+		  <param name="~camera_pitch" value="0" />
     </node>
 
     <!-- RViz -->

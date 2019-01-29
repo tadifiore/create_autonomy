@@ -28,7 +28,7 @@
 
 	<!-- Visual odometry -->
 	<include file="$(find ca_visual_odometry)/launch/vo_raspicam.launch">
-		<arg name="simulation" value="false"/>
+		<arg name="simulation" value="true"/>
 	</include>
 
 </launch>
