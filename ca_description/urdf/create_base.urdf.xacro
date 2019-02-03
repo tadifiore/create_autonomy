@@ -11,21 +11,19 @@
     <xacro:include filename="$(find ca_description)/urdf/sensors/cliff_sensors.xacro"/>
 
     <link name="base_footprint">
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <box size="0.001 0.001 0.001" />
-      </geometry>
-      <material name="Green" />
-    </visual>
-
-    <collision>
-      <origin xyz="0 0 0.017" rpy="0 0 0" />
-      <geometry>
-        <box size="0.001 0.001 0.001" />
-      </geometry>
-    </collision>
+      <collision name="base_footprint">
+        <origin xyz="0.0 0.0 0.0308" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="0.0611632" radius="0.16495" />
+        </geometry>
+      </collision>
     </link>
+
+    <joint name="base_joint" type="fixed">
+      <origin xyz="0 0 0.017" rpy="0 0 0" />
+      <parent link="base_footprint" />
+      <child link="base_link" />
+    </joint>
 
     <link name="base_link">
       <inertial>
@@ -41,19 +39,13 @@
         </geometry>
       </visual>
 
-      <collision>
+      <collision name="base_link">
         <origin xyz="0.0 0.0 0.0308" rpy="0 0 0" />
         <geometry>
           <cylinder length="0.0611632" radius="0.16495" />
         </geometry>
       </collision>
     </link>
-
-    <joint name="base_footprint_joint" type="fixed">
-      <origin xyz="0 0 0.017" rpy="0 0 0" />
-      <parent link="base_footprint" />
-      <child link="base_link" />
-    </joint>
 
     <xacro:wall_sensor visualize="${visualize}"/>
     <xacro:cliff_sensors visualize="${visualize}"/>
