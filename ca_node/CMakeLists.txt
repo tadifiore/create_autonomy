@@ -20,15 +20,28 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(Boost REQUIRED system thread)
 
-catkin_package(
-  LIBRARIES ca_nodelet ca_driver
-  CATKIN_DEPENDS libcreate roscpp std_msgs geometry_msgs nav_msgs sensor_msgs tf ca_msgs ca_description diagnostic_msgs diagnostic_updater nodelet pluginlib
-ecl_threads
-)
-
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
+)
+
+catkin_package(
+  LIBRARIES ca_nodelet ca_driver
+  CATKIN_DEPENDS 
+    libcreate 
+    roscpp 
+    std_msgs 
+    geometry_msgs 
+    nav_msgs 
+    sensor_msgs 
+    tf 
+    ca_msgs 
+    ca_description 
+    diagnostic_msgs 
+    diagnostic_updater 
+    nodelet 
+    pluginlib
+    ecl_threads
 )
 
 add_subdirectory(src)
@@ -40,7 +53,9 @@ install(DIRECTORY launch
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
-install(PROGRAMS scripts/kinect_power.py
+install(PROGRAMS scripts/kinect_breaker_enabler.py
+                 scripts/kinect_power.py
+                 scripts/load_calib.py
         DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 
