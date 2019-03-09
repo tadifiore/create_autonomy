@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="create_base" params="diffdrive_update_rate:=40 wheel_separation wheel_radius:=0.036 wheel_width:=0.024 wheel_torque:=0.5 wheel_accel:=0.5 mass_kg:=3.5 base_diameter *mesh visualize:=false">
+  <xacro:macro name="create_base" params="diffdrive_update_rate:=40 wheel_separation wheel_radius:=0.036 wheel_width:=0.024 wheel_torque:=0.5 wheel_accel:=0.5 mass_kg:=3.5 base_diameter *mesh visualize:=false gpu:=false">
 
     <xacro:include filename="$(find ca_description)/urdf/create_base_gazebo.urdf.xacro"/>
     <xacro:include filename="$(find ca_description)/urdf/create_caster_wheel.xacro"/>
@@ -55,8 +55,8 @@
       <child link="base_link" />
     </joint>
 
-    <xacro:wall_sensor visualize="${visualize}"/>
-    <xacro:cliff_sensors visualize="${visualize}"/>
+    <xacro:wall_sensor visualize="${visualize}" gpu="${gpu}"/>
+    <xacro:cliff_sensors visualize="${visualize}" gpu="${gpu}"/>
     <xacro:imu_sensor/>
 
     <xacro:create_wheel prefix="left" y_offset="${wheel_separation / 2}" wheel_radius="${wheel_radius}" wheel_width="${wheel_width}"/>
