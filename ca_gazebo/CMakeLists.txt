@@ -34,6 +34,10 @@ else()
 	# add_dependencies(create_bumper_plugin ${catkin_EXPORTED_TARGETS})
 	# target_link_libraries(create_bumper_plugin
 	# 			${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+	add_library(gazebo_ros_internal_imu src/gazebo_ros_internal_imu.cpp)
+	add_dependencies(gazebo_ros_internal_imu ${catkin_EXPORTED_TARGETS})
+	target_link_libraries(gazebo_ros_internal_imu
+			${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
   install(DIRECTORY launch worlds models
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

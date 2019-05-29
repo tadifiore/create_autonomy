@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:macro name="internal_imu" params="name *origin">
+  
+  <xacro:include filename="$(find ca_description)/urdf/common_properties.xacro"/>
+  <xacro:include filename="$(find ca_description)/urdf/sensors/internal_imu_angle_gazebo.xacro"/>
+
+  <xacro:property name="parent_link" value="base_link"/>
+  <xacro:property name="link_name" value="${name}_link"/>
+
+  <joint name="${link_name}_joint" type="fixed">
+    <origin xyz="0.0 0.14 0.01" rpy="0 0 0" />
+    <parent link="${parent_link}" />
+    <child link="${link_name}" />
+  </joint>
+
+  <link name="${link_name}">
+    <xacro:dummy_inertia/>
+  </link>
+
+  <xacro:internal_imu_angle_gazebo link_name="${link_name}"/>
+
+</xacro:macro>
+
+</robot>
