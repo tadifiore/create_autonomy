@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: ca_gazebo
+Description: Description of ca_gazebo
+Version: 0.0.1
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib -lcreate_bumper_plugin -lCATKIN
+Requires: gazebo_ros gazebo_plugins roscpp ca_msgs

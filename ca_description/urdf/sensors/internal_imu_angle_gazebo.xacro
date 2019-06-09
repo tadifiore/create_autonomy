@@ -3,13 +3,13 @@
 
 <xacro:macro name="internal_imu_angle_gazebo" params="name link_name">
   <gazebo>
-    <plugin name="internal_imu_angle_controller" filename="libgazebo_ros_internal_imu.so">
+    <plugin name="internal_imu_angle_controller" filename="/home/tomas/catkin_ws/src/create_autonomy/ca_gazebo/devel/lib/libgazebo_ros_internal_imu.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>30</updateRate>
       <bodyName>${link_name}</bodyName>
-      <topicName>${name}/data</topicName>
-      <serviceName>${name}/is_calibrated</serviceName>
-      <gaussianNoise>${0.0017*0.0017}</gaussianNoise>
+      <topicName>${name}</topicName>
+      <serviceName>${name}</serviceName>
+      <gaussianNoise>${0.1*0.1}</gaussianNoise>
       <xyzOffsets>0 0 0</xyzOffsets>
       <rpyOffsets>0 0 0</rpyOffsets>
     </plugin>

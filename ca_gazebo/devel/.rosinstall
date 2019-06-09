@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/tomas/catkin_ws/src/create_autonomy/ca_gazebo/devel/setup.sh

@@ -1,0 +1,8 @@
+prefix=/home/tomas/catkin_ws/src/create_autonomy/ca_gazebo/devel
+
+Name: ca_gazebo
+Description: Description of ca_gazebo
+Version: 0.0.1
+Cflags: -I/home/tomas/catkin_ws/src/create_autonomy/ca_gazebo/include
+Libs: -L/home/tomas/catkin_ws/src/create_autonomy/ca_gazebo/devel/lib -lcreate_bumper_plugin -lCATKIN
+Requires: gazebo_ros gazebo_plugins roscpp ca_msgs
